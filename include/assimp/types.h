@@ -172,7 +172,16 @@ struct aiColor3D {
     aiColor3D(const aiColor3D &o) :
             r(o.r), g(o.g), b(o.b) {}
 
+    aiColor3D(aiColor3D &&o) AI_NO_EXCEPT : r(o.r), g(o.g), b(o.b) {}
+
     aiColor3D &operator=(const aiColor3D &o) {
+        r = o.r;
+        g = o.g;
+        b = o.b;
+        return *this;
+    }
+
+    aiColor3D &operator=(aiColor3D &&o) AI_NO_EXCEPT {
         r = o.r;
         g = o.g;
         b = o.b;
